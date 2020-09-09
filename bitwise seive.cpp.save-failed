@@ -1,0 +1,53 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+int seive[10001];
+
+void setbit(int x)
+{
+    int a=x/32;
+    int b=x%32;
+    seive[a]=a|1<<b;
+}
+
+bool checkbit(int x)
+{
+    int a=x/32;
+    int b=x%32;
+    return a&1<<b;
+}
+
+void seiv(int n)
+{
+    int sq=sqrt(n);
+    setbit(0);
+    setbit(1);
+    for(int i=4; i<=n; i+=2)
+    {
+        setbit(i);
+    }
+    for(int i=3; i<=sq; i=i+2)
+    {
+        if(!checkbit(i))
+        {
+            for(int j=2*i; j<=n; j+=i)
+            {
+                setbit(j);
+            }
+        }
+    }
+    return;
+}
+
+int main()
+{
+    int k;
+    cin>>k;
+    seiv(k);
+    if(checkbit(k))
+    {
+        cout<<"prime not";
+    }
+    else
+        cout<<"prime";
+}
