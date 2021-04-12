@@ -19,6 +19,6 @@ int kaden(int a[], int n)
 
 int main()
 {
-    int arr[4] = {-9, 10, -2, 5};
-    cout << kaden(arr, 4);
+    int arr[8] = {1,-2,3,-4,1,-2,3,-4};
+    cout << kaden(arr, 8);
 }
