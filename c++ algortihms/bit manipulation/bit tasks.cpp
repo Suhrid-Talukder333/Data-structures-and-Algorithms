@@ -37,6 +37,20 @@ void updateBit(int &n, int i, int v)
     n = (n | mask);
 }
 
+void clearBitsTilli(int &n, int i)
+{
+    int mask = (-1 << i);
+    n = n & mask;
+}
+
+void clearBitsRange(int &n, int i, int j)
+{ // i is the starting and j is the ending range
+    int mask1 = (~0) << j;
+    int mask2 = pow(2, i) - 1;
+    int mask = mask1 | mask2;
+    n = n & mask;
+}
+
 int main()
 {
 }
