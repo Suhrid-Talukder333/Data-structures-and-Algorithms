@@ -23,10 +23,16 @@ int countBitFast(int n)
     return ans;
 }
 
+int popCount(int n)
+{
+    return __builtin_popcount(n);
+}
+
 int main()
 {
     int n;
     cin >> n;
     cout << countBitsFirstMethod(n) << endl;
     cout << countBitFast(n) << endl;
+    cout << popCount(n) << endl;
 }
