@@ -1,19 +1,19 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-int bexpo(int n,int p)
+int bexpo(int n, int p)
 {
-	int result=1;
-	while(p)
+	int result = 1;
+	while (p)
 	{
-		if(p%2==0)
+		if (p % 2 == 0)
 		{
-			n*=n;
-			p/=2;
+			n *= n;
+			p /= 2;
 		}
 		else
 		{
-			result*=n;
+			result *= n;
 			p--;
 		}
 	}
@@ -22,7 +22,7 @@ int bexpo(int n,int p)
 
 int main()
 {
-	int n,p;
-	cin>>n>>p;
-	cout<<bexpo(n,p);
+	int n, p;
+	cin >> n >> p;
+	cout << bexpo(n, p);
 }
