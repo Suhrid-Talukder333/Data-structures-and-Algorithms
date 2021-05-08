@@ -16,6 +16,7 @@ int main()
     int arr[8] = {1, 2, 3, 4, 5, 6, 7, 8};
     int x;
     cin >> x;
+    x %= 8;
     for (int i = 0; i < x; i++)
     {
         leftRotate(arr, 8);
