@@ -3,6 +3,7 @@ using namespace std;
 
 int countBitsFirstMethod(int n)
 {
+    //brian keningam's algorithm
     int ans = 0;
     while (n > 0)
     {
