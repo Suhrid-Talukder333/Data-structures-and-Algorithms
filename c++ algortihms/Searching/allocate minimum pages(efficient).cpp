@@ -11,6 +11,7 @@ bool doAble(int arr[], int n, int k, int ans)
         if (sum + arr[i] > ans)
         {
             res++;
+            sum = arr[i];
         }
         else
         {
