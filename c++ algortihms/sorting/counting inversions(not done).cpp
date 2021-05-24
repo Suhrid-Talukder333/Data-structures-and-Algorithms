@@ -4,33 +4,38 @@ using namespace std;
 int merge(int arr[], int start, int mid, int end)
 {
     int ans = 0;
-    int i = start;
-    int j = mid;
-    int k = 0;
-    int temp[end - start + 1];
-    while (i < mid && j < end)
+    int n1 = mid - start + 1;
+    int n2 = end - mid;
+    int left[n1];
+    int right[n2];
+    int i = 0, j = 0, k = start;
+    for (int x = 0; x < n1; x++)
     {
-        if (arr[i] < arr[j])
+        left[x] = arr[start + x];
+    }
+    for (int x = 0; x < n2; x++)
+    {
+        right[x] = arr[mid + x + 1];
+    }
+    while (i < n1 && j < n2)
+    {
+        if (left[i] <= right[j])
         {
-            temp[k++] = arr[i++];
+            arr[k++] = left[i++];
         }
-        else if (arr[i] > arr[j])
+        else
         {
-            temp[k++] = arr[j++];
-            ans++;
+            arr[k++] = right[j++];
+            ans += (n1 - i);
         }
     }
-    while (i < mid)
+    while (i < n1)
     {
-        temp[k++] = temp[i++];
+        arr[k++] = left[i++];
     }
-    while (j < end)
+    while (j < n2)
     {
-        temp[k++] = temp[j++];
-    }
-    for (int x = start; x <= end; x++)
-    {
-        arr[x] = temp[x];
+        arr[k++] = right[j++];
     }
     return ans;
 }
@@ -41,22 +46,17 @@ int mergeSort(int arr[], int start, int end)
     if (start < end)
     {
         int mid = (start + end) / 2;
-        mergeSort(arr, start, mid);
-        mergeSort(arr, mid + 1, end);
-        ans += merge(arr, start, mid + 1, end);
+        ans += mergeSort(arr, start, mid);
+
+        ans += mergeSort(arr, mid + 1, end);
+
+        ans += merge(arr, start, mid, end);
     }
     return ans;
 }
 
-void countInversions(int arr[], int start, int n)
-{
-    int ans = 0;
-    ans += mergeSort(arr, start, n);
-    cout << ans;
-}
-
 int main()
 {
-    int arr[5] = {1, 2, 1, 3, 2};
-    countInversions(arr, 0, 4);
+    int arr[5] = {2, 4, 1, 3, 5};
+    cout << mergeSort(arr, 0, 5);
 }
