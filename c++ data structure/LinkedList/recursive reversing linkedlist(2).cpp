@@ -13,16 +13,15 @@ struct node
     }
 };
 
-node *reverseIt(node *head)
+node *reverseIt(node *curr, node *prev)
 {
-    if (head->next == NULL || head->next->next == NULL)
+    if (curr == NULL)
     {
-        return head;
+        return prev;
     }
-    node *secondEndHead = reverseIt(head->next);
-    node *temp = secondEndHead->next;
-    secondEndHead->next->next = secondEndHead;
-    return temp;
+    node *next = curr->next;
+    curr->next = prev;
+    return reverseIt(next, curr);
 }
 
 void display(node *head)
@@ -40,6 +39,6 @@ int main()
     head->next = new node(20);
     head->next->next = new node(20);
     head->next->next->next = new node(40);
-    head = reverseIt(head);
+    head = reverseIt(head, NULL);
     display(head);
 }
