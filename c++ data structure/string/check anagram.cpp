@@ -11,12 +11,12 @@ void check(string s1, string s2)
     {
         init[s1[i]]++;
     }
+
+    for (int i = 0; i < s2.length(); i++)
     {
-        for (int i = 0; i < s2.length(); i++)
-        {
-            init[s2[i]]--;
-        }
+        init[s2[i]]--;
     }
+
     for (int i = 0; i < 256; i++)
     {
         if (init[i] != 0)

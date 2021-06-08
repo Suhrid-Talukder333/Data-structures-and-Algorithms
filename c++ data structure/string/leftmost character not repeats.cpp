@@ -5,12 +5,8 @@ using namespace std;
 
 void solve(string s)
 {
-    int res = INT_MAX;
     int check[256];
-    for (int i = 0; i < 256; i++)
-    {
-        check[i] = -1;
-    }
+    fill(check, check + 256, -1);
     for (int i = 0; i < s.length(); i++)
     {
         if (check[s[i]] == -1)
@@ -22,19 +18,22 @@ void solve(string s)
             check[s[i]] = -2;
         }
     }
+    int ans = INT_MAX;
     for (int i = 0; i < 256; i++)
     {
         if (check[i] >= 0)
         {
-            res = min(res, check[i]);
+            ans = min(ans, check[i]);
         }
     }
-    if (res == INT_MAX)
+    if (ans == INT_MAX)
     {
-        cout << -1;
-        return;
+        cout << "not Found";
     }
-    cout << s[res];
+    else
+    {
+        cout << s[ans];
+    }
 }
 
 int main()

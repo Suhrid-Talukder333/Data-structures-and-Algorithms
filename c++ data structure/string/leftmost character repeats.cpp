@@ -5,29 +5,27 @@ using namespace std;
 
 void solve(string s)
 {
-    int res = INT_MAX;
-    int check[256];
-    for (int i = 0; i < 256; i++)
+    bool visited[256] = {0};
+    int ans = -1;
+    for (int i = s.length() - 1; i >= 0; i--)
     {
-        check[i] = -1;
-    }
-    for (int i = 0; i < s.length(); i++)
-    {
-        if (check[s[i]] == -1)
+        if (!visited[s[i]])
         {
-            check[s[i]] = i;
+            visited[s[i]] = true;
         }
         else
         {
-            res = min(res, check[s[i]]);
+            ans = i;
         }
     }
-    if (res == INT_MAX)
+    if (ans == -1)
     {
-        cout << -1;
-        return;
+        cout << "not found";
     }
-    cout << s[res];
+    else
+    {
+        cout << s[ans];
+    }
 }
 
 int main()
