@@ -16,10 +16,11 @@ void solve(string s)
             else
             {
                 res = max(res, j - i + 1);
-                visited[s[j]]
+                visited[s[j]] = 1;
             }
         }
     }
+    cout << res;
 }
 
 int main()
