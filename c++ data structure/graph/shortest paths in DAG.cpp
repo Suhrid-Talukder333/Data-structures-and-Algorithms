@@ -24,7 +24,7 @@ int main()
   for (int i = 0; i < n; i++)
   {
     visited[i] = false;
-    dist[i] = INT_MAX;
+    dist[i] = 100;
   }
   int weights[n][n];
   for (int i = 0; i < n; i++)
@@ -40,7 +40,7 @@ int main()
     int a, b, c;
     cin >> a >> b >> c;
     adj[a].push_back(b);
-    weights[b][a] = c;
+    weights[a][b] = c;
   }
 
   int source;
@@ -63,10 +63,8 @@ int main()
     s.pop();
     for (auto x : adj[current])
     {
-      if (dist[x] > dist[current] + weights[current][x])
-      {
-        dist[x] = dist[current] + weights[current][x];
-      }
+      cout << dist[current] << endl;
+      dist[x] = min(dist[x], dist[current] + weights[current][x]);
     }
   }
 
